@@ -81,3 +81,75 @@
     ```bash
     cat /proc/meminfo
     ```
+
+1. **Display System Bootup Messages (`dmesg`)**: Display kernel ring buffer messages, including bootup messages.
+
+   ```bash
+   dmesg
+   ```
+
+2. **Display System Hardware Information (`hwinfo`)**: Display detailed hardware information including CPU, memory, disk, and network.
+
+   ```bash
+   hwinfo
+   ```
+
+3. **Display USB Device Information (`lsusb`)**: Display information about USB devices connected to the system.
+
+   ```bash
+   lsusb
+   ```
+
+4. **Display PCI Device Information (`lspci`)**: Display information about PCI devices connected to the system.
+
+   ```bash
+   lspci
+   ```
+
+5. **Display System Information (`inxi`)**: Display comprehensive system information including hardware, CPU, memory, disk, and network.
+
+   ```bash
+   inxi -Fx
+   ```
+
+6. **Display System Temperature (`sensors`)**: Display CPU temperature and other sensor data.
+
+   ```bash
+   sensors
+   ```
+
+7. **Display Disk Partition Information (`parted`)**: Display information about disk partitions.
+
+   ```bash
+   parted -l
+   ```
+
+8. **Display System Information (`neofetch`)**: Display system information and an ASCII art logo.
+
+   ```bash
+   neofetch
+   ```
+
+9. **Display File System Information (`stat`)**: Display file system information such as file size, inode number, and access rights.
+
+   ```bash
+   stat filename
+   ```
+
+10. **Display Network Statistics (`netstat`)**: Display network statistics such as active connections, routing tables, and interface statistics.
+
+    ```bash
+    netstat -a
+    ```
+
+11. **Display System Resource Usage (`top`)**: Display real-time information about system resource usage including CPU, memory, and processes.
+
+    ```bash
+    top
+    ```
+
+12. **Display System Information (`lshw`)**: Display detailed hardware information using the `lshw` command.
+
+    ```bash
+    lshw
+    ```
