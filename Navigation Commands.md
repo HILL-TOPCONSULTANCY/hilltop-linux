@@ -88,7 +88,6 @@
     ```bash
     tar -xzvf archive_name.tar.gz
     ```
-Certainly! Here are some more essential Linux navigation commands along with their corresponding Bash code:
 
 16. **List Hidden Files (`ls -a`)**: Display hidden files (files starting with '.') in addition to regular files.
 
@@ -175,4 +174,90 @@ Certainly! Here are some more essential Linux navigation commands along with the
     popd
     ```
 
+1. **Change to Previous Directory (`cd -`)**: Switch to the previous working directory.
+
+   ```bash
+   cd -
+   ```
+
+2. **Change to Nth Previous Directory (`cd ~N`)**: Go back to the Nth previous directory in the directory stack.
+
+   ```bash
+   cd ~N
+   ```
+
+3. **Change to Parent Directory (`cd ..`)**: Move up one directory level.
+
+   ```bash
+   cd ..
+   ```
+
+4. **Change to Root Directory (`cd /`)**: Navigate to the root directory.
+
+   ```bash
+   cd /
+   ```
+
+5. **Change to Home Directory (`cd` or `cd ~`)**: Move to the home directory of the current user.
+
+   ```bash
+   cd
+   ```
+
+6. **Change to Previous Working Directory (`cd -`)**: Return to the previous working directory.
+
+   ```bash
+   cd -
+   ```
+
+7. **Create Nested Directories (`mkdir -p`)**: Create directories and any necessary parent directories recursively.
+
+   ```bash
+   mkdir -p directory/subdirectory
+   ```
+
+8. **Remove Directory and Its Contents Recursively (`rm -r`)**: Delete a directory and its contents.
+
+   ```bash
+   rm -r directory_name
+   ```
+
+9. **List Directory Contents Recursively (`ls -R`)**: Display the contents of the current directory and its subdirectories recursively.
+
+   ```bash
+   ls -R
+   ```
+
+10. **Find Files by Name (`find`)**: Search for files or directories by name.
+
+    ```bash
+    find /path/to/search -name "filename"
+    ```
+
+11. **Find Files by Type (`find`)**: Search for files by type (e.g., directories, regular files, symbolic links).
+
+    ```bash
+    find /path/to/search -type f  # for regular files
+    find /path/to/search -type d  # for directories
+    find /path/to/search -type l  # for symbolic links
+    ```
+
+12. **Find Files Modified Within a Time Frame (`find`)**: Search for files modified within a specified time frame.
+
+    ```bash
+    find /path/to/search -mtime -5  # files modified within the last 5 days
+    find /path/to/search -mtime +5  # files modified more than 5 days ago
+    ```
+
+13. **List Directory Sizes (`du`)**: Display the sizes of directories and their contents.
+
+    ```bash
+    du -h directory_name
+    ```
+
+14. **Display Directory Structure (`tree`)**: Display the directory structure in a tree-like format.
+
+    ```bash
+    tree
+    ```
 
