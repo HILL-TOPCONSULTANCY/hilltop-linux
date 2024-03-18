@@ -101,7 +101,7 @@ These examples demonstrate various techniques for handling input and output in s
 
 =======================================================================================================
 
-Here's an example shell script that allows users to register into a school by inputting their details, creating a profile, and printing an overview. The script then redirects the output into a text file:
+#Here's an example shell script that allows users to register into a school by inputting their details, creating a profile, and printing an overview. The script then redirects the output into a text file:
 
 ```bash
 #!/bin/bash
@@ -144,7 +144,8 @@ create_profile > "$output_file"
 echo "User profile has been saved to $output_file"
 ```
 
-Save the above script into a file (e.g., `register.sh`) and make it executable (`chmod +x register.sh`). Then, run the script (`./register.sh`), and it will prompt users to input their details, create a profile, print an overview, and save the profile to a text file named `user_profile.txt`.
+#Save the above script into a file (e.g., `register.sh`) and make it executable (`chmod +x register.sh`). Then, run the script (`./register.sh`),
+#and it will prompt users to input their details, create a profile, print an overview, and save the profile to a text file named `user_profile.txt`.
 
 =================================================================================================
 
