@@ -175,7 +175,7 @@ create_profile() {
     Email: $email
 EOF
 }
-
+```sh
 # Main script
 
 # Welcome message
@@ -201,3 +201,4 @@ output_file="bank_profile.txt"
 create_profile > "$output_file"
 
 echo "User profile has been saved to $output_file"
+```
