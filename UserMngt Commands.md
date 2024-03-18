@@ -154,3 +154,64 @@
     ```bash
     sudo usermod -e "YYYY-MM-DD" username
     ```
+Certainly! Here are a few more user management commands in Linux:
+
+1. **Change User's Primary Group (`usermod -g`)**: Change the primary group of a user account.
+
+   ```bash
+   sudo usermod -g new_primary_group username
+   ```
+
+2. **List User's Login Information (`finger`)**: Display detailed information about a user's login status, including their full name, login shell, and last login time.
+
+   ```bash
+   finger username
+   ```
+
+3. **Add User to System Without Home Directory (`useradd -M`)**: Create a user account without creating a home directory.
+
+   ```bash
+   sudo useradd -M username
+   ```
+
+4. **Create User with Specific UID and GID (`useradd -u -o`)**: Create a user account with a specific user ID (UID) and group ID (GID) while allowing duplicate IDs.
+
+   ```bash
+   sudo useradd -u uid -g gid -o username
+   ```
+
+5. **List Users Logged In (`who`)**: Display a list of users currently logged into the system.
+
+   ```bash
+   who
+   ```
+
+6. **List Users Logged In with Detailed Information (`w`)**: Display a list of users currently logged into the system along with detailed information such as login time and CPU usage.
+
+   ```bash
+   w
+   ```
+
+7. **Change User's Password Expiry (`chage -m`)**: Set the minimum number of days before a user can change their password again.
+
+   ```bash
+   sudo chage -m min_days username
+   ```
+
+8. **Change User's Password Inactivity Expiry (`chage -i`)**: Set the number of days of inactivity after which the user's account will be locked.
+
+   ```bash
+   sudo chage -i inactivity_days username
+   ```
+
+9. **Change User's Account Expiry Date (`chage -E`)**: Set the account expiry date for a user account.
+
+   ```bash
+   sudo chage -E expiry_date username
+   ```
+
+10. **Check User's Password Status (`passwd -S`)**: Display the status of a user's password, including password aging information.
+
+    ```bash
+    passwd -S username
+    ```
