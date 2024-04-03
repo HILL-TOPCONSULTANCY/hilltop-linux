@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 
 # Define variables
@@ -22,15 +23,15 @@ if [ $? -eq 0 ]; then
 else
     echo "Backup failed."
 fi
-
+```
 
 ---
 
-#***USER MGNT***
+***USER MANAGEMENT***
 
 
-#Managing users and groups is a crucial aspect of system administration. Shell scripts can automate user and group management tasks efficiently.
-#Here's an example shell script to automate user and group management:
+# Managing users and groups is a crucial aspect of system administration. Shell scripts can automate user and group management tasks efficiently.
+# Here's an example shell script to automate user and group management:
 
 ```bash
 #!/bin/bash
@@ -53,8 +54,9 @@ create_user() {
         echo "User $username created successfully."
     fi
 }
-
+```
 # Function to delete a user
+```bash
 delete_user() {
     local username="$1"
 
@@ -68,8 +70,9 @@ delete_user() {
         echo "User $username does not exist."
     fi
 }
-
+```
 # Function to create a group
+```bash
 create_group() {
     local groupname="$1"
 
@@ -83,8 +86,9 @@ create_group() {
         echo "Group $groupname created successfully."
     fi
 }
-
+```
 # Function to delete a group
+```bash
 delete_group() {
     local groupname="$1"
 
@@ -98,7 +102,7 @@ delete_group() {
         echo "Group $groupname does not exist."
     fi
 }
-
+´´´
 # Main script
 
 # Create a user
