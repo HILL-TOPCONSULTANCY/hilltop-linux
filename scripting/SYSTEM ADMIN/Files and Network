@@ -1,8 +1,9 @@
-#!/bin/bash
+
 
 # User and Group Management
 
 # Function to create a user
+```bash
 create_user() {
     local username="$1"
     local password="$2"
@@ -20,8 +21,10 @@ create_user() {
         echo "User $username created successfully."
     fi
 }
-
+```
 # Function to delete a user
+
+```bash
 delete_user() {
     local username="$1"
 
@@ -35,8 +38,9 @@ delete_user() {
         echo "User $username does not exist."
     fi
 }
-
+```
 # Function to create a group
+```bash
 create_group() {
     local groupname="$1"
 
@@ -50,8 +54,10 @@ create_group() {
         echo "Group $groupname created successfully."
     fi
 }
-
+```
 # Function to delete a group
+
+```bash
 delete_group() {
     local groupname="$1"
 
@@ -65,10 +71,11 @@ delete_group() {
         echo "Group $groupname does not exist."
     fi
 }
-
+```
 # File and Directory Operations
 
 # Function to create a directory
+```bash
 create_directory() {
     local directory="$1"
 
@@ -82,8 +89,9 @@ create_directory() {
         echo "Directory $directory created successfully."
     fi
 }
-
+```
 # Function to delete a directory
+```bash
 delete_directory() {
     local directory="$1"
 
@@ -97,15 +105,18 @@ delete_directory() {
         echo "Directory $directory does not exist."
     fi
 }
-
+```
 # Process Management
 
 # Function to list running processes
+```bash
 list_processes() {
     ps aux
 }
-
+```
 # Function to kill a process by name
+
+```bash
 kill_process() {
     local process_name="$1"
 
@@ -119,32 +130,36 @@ kill_process() {
         echo "Process $process_name not found."
     fi
 }
-
+```
 # Basic Networking Operations
 
 # Function to display network interfaces
+```bash
 display_interfaces() {
     ifconfig -a
 }
-
+```
 # Function to display network connections
+```bash
 display_connections() {
     netstat -tuln
 }
-
+```
 # System Monitoring and Logging
 
 # Function to display system resource usage
+```bash
 display_resource_usage() {
     top -n 1
 }
-
+```
 # Function to log system information
+```bash
 log_system_info() {
     echo "$(date): System information - $(uname -a)" >> system_info.log
     echo "System information logged to system_info.log."
 }
-
+```
 # Main script
 
 # User and Group Management
