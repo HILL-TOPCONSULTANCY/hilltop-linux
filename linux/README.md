@@ -1,7 +1,3 @@
-Certainly! Here's a template for a README.md file that introduces Linux, its distributions, architecture, and filesystem. This can be used as a starting point for a lecture. You might want to customize it further based on the depth and scope of the lecture you're planning.
-
----
-
 # Introduction to Linux
 
 Welcome to the introductory lecture on Linux! This lecture aims to provide a foundational understanding of Linux, its distributions, architecture, and the filesystem. By the end of this session, you'll have a solid base to explore the vast and versatile world of Linux.
@@ -46,7 +42,8 @@ Linux architecture is modular, comprising the Linux kernel, system libraries, an
 ## The Linux Filesystem
 
 The Linux filesystem is a hierarchical structure where all files and directories are located under the root directory, denoted by "/". This structure allows for efficient file storage, management, and access. Key directories include:
-´´´sh
+
+sh
 /
 ├── bin/               # Essential user command binaries
 ├── etc/               # System configuration files
