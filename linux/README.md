@@ -54,8 +54,6 @@ The Linux filesystem is a hierarchical structure where all files and directories
     │   └── lib/       # Local libraries
     └── share/         # Architecture-independent data
 ````
-Sure, I'll draft a README.md that explains the different directories in the Linux filesystem. This document can serve as a guide for newcomers to Linux, helping them understand the purpose and contents of each directory at a glance.
-
 ---
 
 # Linux Filesystem Hierarchy Explanation
