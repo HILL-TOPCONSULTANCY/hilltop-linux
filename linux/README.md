@@ -1,17 +1,5 @@
 # Introduction to Linux
 
-Welcome to the introductory lecture on Linux! This lecture aims to provide a foundational understanding of Linux, its distributions, architecture, and the filesystem. By the end of this session, you'll have a solid base to explore the vast and versatile world of Linux.
-
-## Table of Contents
-
-- [What is Linux?](#what-is-linux)
-- [Linux Distributions](#linux-distributions)
-- [Linux Architecture](#linux-architecture)
-- [The Linux Filesystem](#the-linux-filesystem)
-- [Getting Started with Linux](#getting-started-with-linux)
-- [Resources for Further Learning](#resources-for-further-learning)
-- [Conclusion](#conclusion)
-
 ## What is Linux?
 
 Linux is a free, open-source operating system (OS) based on Unix. It was first released by Linus Torvalds in 1991. As an OS, Linux manages the hardware resources for the user and provides a set of tools for program development and execution. One of Linux's core components is the Linux kernel, which handles process control, networking, access to peripherals, and file system management.
