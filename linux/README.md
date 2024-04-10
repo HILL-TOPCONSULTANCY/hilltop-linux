@@ -43,7 +43,7 @@ Linux architecture is modular, comprising the Linux kernel, system libraries, an
 
 The Linux filesystem is a hierarchical structure where all files and directories are located under the root directory, denoted by "/". This structure allows for efficient file storage, management, and access. Key directories include:
 
-sh
+```sh
 /
 ├── bin/               # Essential user command binaries
 ├── etc/               # System configuration files
@@ -65,7 +65,7 @@ sh
     │   ├── bin/       # Local binaries
     │   └── lib/       # Local libraries
     └── share/         # Architecture-independent data
-´´´
+````
 
 ## Resources for Further Learning
 
