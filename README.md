@@ -1,9 +1,9 @@
-*** ls** - The most frequently used command in Linux to list directories
-* **pwd** - Print working directory command in Linux
+- ***ls** - The most frequently used command in Linux to list directories
+- **pwd** - Print working directory command in Linux
 - **cd** - Linux command to navigate through directories
 - **mkdir** - Command used to create directories in Linux
 - **mv** - Move or rename files in Linux
--** cp** - Similar usage as mv but for copying files in Linux
+- **cp** - Similar usage as mv but for copying files in Linux
 - **rm** - Delete files or directories
 - **touc**h - Create blank/empty files
 - **ln** - Create symbolic links (shortcuts) to other files
@@ -38,13 +38,13 @@
 - **sort** - Linux command to sort the content of a file while outputting
 - **export** - Export environment variables in Linux
 - **zip** - Zip files in Linux
-- **unzip **- Unzip files in Linux
+- **unzip**- Unzip files in Linux
 - **ssh** - Secure Shell command in Linux
 - **service** - Linux command to start and stop services
 - **ps** - Display active processes
 - **kill** and killall - Kill active processes by process ID or name
 - **df** - Display disk filesystem information
--  **Mount** file systems in Linux
+- **Mount** file systems in Linux
 - **chmod** - Command to change file permissions
 - **chown** - Command for granting ownership of files or folders
 - **ifconfig** - Display network interfaces and IP addresses
