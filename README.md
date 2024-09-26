@@ -13,15 +13,15 @@
 - ** less** - Linux command to display paged outputs in the terminal
 -** man **- Access manual pages for all Linux commands
 - ls - The most frequently used command in Linux to list directories
-pwd - Print working directory command in Linux
-cd - Linux command to navigate through directories
-mkdir - Command used to create directories in Linux
-mv - Move or rename files in Linux
-cp - Similar usage as mv but for copying files in Linux
-rm - Delete files or directories
-touch - Create blank/empty files
-ln - Create symbolic links (shortcuts) to other files
-clear - Clear the terminal display
+- pwd - Print working directory command in Linux
+- cd - Linux command to navigate through directories
+- mkdir - Command used to create directories in Linux
+- mv - Move or rename files in Linux
+- cp - Similar usage as mv but for copying files in Linux
+- rm - Delete files or directories
+- touch - Create blank/empty files
+- ln - Create symbolic links (shortcuts) to other files
+- clear - Clear the terminal display
 cat - Display file contents on the terminal
 echo - Print any text that follows the command
 less - Linux command to display paged outputs in the terminal
