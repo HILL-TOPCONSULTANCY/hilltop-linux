@@ -78,22 +78,22 @@
 - service - Linux command to start and stop services
 - ps - Display active processes
 - kill and killall - Kill active processes by process ID or name
-- df - Display disk filesystem information
-- mount - Mount file systems in Linux
-- chmod - Command to change file permissions
-- chown - Command for granting ownership of files or folders
-- ifconfig - Display network interfaces and IP addresses
-- traceroute - Trace all the network hops to reach the destination
-- wget - Direct download files from the internet
-- ufw - Firewall command
-- iptables - Base firewall for all other firewall utilities to interface with
-- apt, pacman, yum, rpm - Package managers depending on the distribution
-- sudo - Command to escalate privileges in Linux
-- cal - View a command-line calendar
-- alias - Create custom shortcuts for your regularly used commands
-- dd - Majorly used for creating bootable USB sticks
-- whereis - Locate the binary, source, and manual pages for a command
-- whatis - Find what a command is used for
-- top - View active processes live with their system usage
-- useradd and usermod - Add a new user or change existing user data
-- passwd - Create or update passwords for existing users
+- **df** - Display disk filesystem information
+- **mount** - Mount file systems in Linux
+- **chmod** - Command to change file permissions
+- **chown** - Command for granting ownership of files or folders
+- **ifconfig** - Display network interfaces and IP addresses
+- **traceroute** - Trace all the network hops to reach the destination
+- **wget** - Direct download files from the internet
+- **ufw **- Firewall command
+- **iptables** - Base firewall for all other firewall utilities to interface with
+- **apt**,**pacman**, **yum**, **rpm** - Package managers depending on the distribution
+- **sudo** - Command to escalate privileges in Linux
+- **cal** - View a command-line calendar
+- **alias** - Create custom shortcuts for your regularly used commands
+- **dd** - Majorly used for creating bootable USB sticks
+- **whereis** - Locate the binary, source, and manual pages for a command
+- **whatis** - Find what a command is used for
+- **top** - View active processes live with their system usage
+-** useradd** and **usermod** - Add a new user or change existing user data
+- **passwd** - Create or update passwords for existing users
