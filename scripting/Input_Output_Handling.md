@@ -97,10 +97,6 @@ done
 dialog --inputbox "Enter your name:" 10 30 2> /dev/tty
 ```
 
-These examples demonstrate various techniques for handling input and output in shell scripting. Shell scripting provides powerful capabilities for interacting with users, files, and other processes, making it a versatile tool for automation and system administration tasks.
-
-=======================================================================================================
-
 #Here's an example shell script that allows users to register into a school by inputting their details, creating a profile, and printing an overview. The script then redirects the output into a text file:
 
 ```bash
@@ -112,7 +108,8 @@ get_user_details() {
     read -p "Enter your age: " age
     read -p "Enter your email: " email
 }
-
+```
+```sh
 # Function to create user profile
 create_profile() {
     cat << EOF
@@ -122,7 +119,8 @@ create_profile() {
     Email: $email
 EOF
 }
-
+```
+```sh
 # Main script
 
 # Welcome message
@@ -148,7 +146,7 @@ echo "User profile has been saved to $output_file"
 #and it will prompt users to input their details, create a profile, print an overview, and save the profile to a text file named `user_profile.txt`.
 
 =================================================================================================
-
+```sh
 #!/bin/bash
 
 # Function to prompt user for input and store it in variables
@@ -161,7 +159,8 @@ get_user_details() {
     read -p "Create a password for your account: " -s password
     echo ""
 }
-
+```
+```sh
 # Function to create user profile
 create_profile() {
     cat << EOF
@@ -175,6 +174,7 @@ create_profile() {
     Email: $email
 EOF
 }
+```
 ```sh
 # Main script
 
