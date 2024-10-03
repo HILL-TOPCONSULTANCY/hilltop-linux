@@ -1,204 +1,219 @@
-Conditional statements, such as if/else constructs, are used in shell scripting to execute certain blocks of code based on specified conditions. Here are examples of if/else statements in shell scripting:
+# Conditional Statements in Shell Scripting
 
-1. **Basic if/else Statement**:
+Conditional statements are used in shell scripting to make decisions based on certain conditions. These conditions determine which block of code will be executed. The most common types of conditional statements in shell scripting are:
+
+1. **if-else statement**
+2. **if-elif-else statement**
+3. **case statement**
+
+Each of these structures allows scripts to evaluate conditions and execute commands based on whether the condition is true or false.
+
+### 1. **if-else Statement**
+
+The basic syntax for an `if-else` statement is:
 
 ```bash
-#!/bin/bash
-
-# Define a variable
-age=20
-
-# Check if the age is greater than or equal to 18
-if [ "$age" -ge 18 ]; then
-    echo "You are an adult."
+if [ condition ]; then
+    # Commands to execute if condition is true
 else
-    echo "You are a minor."
+    # Commands to execute if condition is false
 fi
 ```
 
-2. **If/elif/else Statement**:
+#### Example: Simple `if-else` Statement
 
 ```bash
 #!/bin/bash
+# Check if a directory exists
 
-# Define a variable
-grade=85
+DIR="/home/user"
 
-# Check grade level
-if [ "$grade" -ge 90 ]; then
-    echo "Grade: A"
-elif [ "$grade" -ge 80 ]; then
-    echo "Grade: B"
-elif [ "$grade" -ge 70 ]; then
-    echo "Grade: C"
+if [ -d "$DIR" ]; then
+    echo "The directory $DIR exists."
 else
-    echo "Grade: F"
+    echo "The directory $DIR does not exist."
 fi
 ```
 
-3. **Nested if/else Statement**:
+In this example, the script checks if a directory exists using `-d` (which checks for directory existence). If the condition is true, it prints a message; otherwise, it prints another message.
+
+### 2. **if-elif-else Statement**
+
+The `if-elif-else` structure allows for multiple conditions to be checked sequentially. The syntax is:
+
+```bash
+if [ condition1 ]; then
+    # Commands to execute if condition1 is true
+elif [ condition2 ]; then
+    # Commands to execute if condition2 is true
+else
+    # Commands to execute if neither condition1 nor condition2 is true
+fi
+```
+
+#### Example: Checking Multiple Conditions with `if-elif-else`
 
 ```bash
 #!/bin/bash
+# Check the value of a variable
 
-# Define variables
-is_weekend="yes"
-is_raining="no"
+NUM=15
 
-# Check if it's a weekend and raining
-if [ "$is_weekend" = "yes" ]; then
-    if [ "$is_raining" = "yes" ]; then
-        echo "Stay indoors and relax."
+if [ $NUM -lt 10 ]; then
+    echo "The number is less than 10."
+elif [ $NUM -eq 15 ]; then
+    echo "The number is equal to 15."
+else
+    echo "The number is greater than 10 and not equal to 15."
+fi
+```
+
+In this example, the script checks whether a number is less than 10, equal to 15, or something else.
+
+### 3. **Nested if Statements**
+
+You can nest `if` statements inside other `if` statements to check multiple conditions in a more complex way.
+
+#### Example: Nested `if` Statements
+
+```bash
+#!/bin/bash
+# Check the value of a variable and a file
+
+NUM=20
+FILE="/tmp/testfile.txt"
+
+if [ $NUM -eq 20 ]; then
+    if [ -f "$FILE" ]; then
+        echo "The number is 20 and the file exists."
     else
-        echo "Go out and have fun!"
+        echo "The number is 20, but the file does not exist."
     fi
 else
-    echo "It's a weekday, carry on with your activities."
+    echo "The number is not 20."
 fi
 ```
 
-4. **Using Logical Operators**:
+In this case, the script checks if a number equals 20, and within that condition, it also checks whether a file exists.
+
+### 4. **case Statement**
+
+The `case` statement is a more readable and efficient way to handle multiple conditions, especially when there are many options to choose from. It works similarly to the `switch` statement in other programming languages.
+
+The syntax for `case` is:
+
+```bash
+case variable in
+    pattern1)
+        # Commands to execute if variable matches pattern1
+        ;;
+    pattern2)
+        # Commands to execute if variable matches pattern2
+        ;;
+    *)
+        # Default commands if no pattern matches
+        ;;
+esac
+```
+
+#### Example: Using `case` for Multiple Conditions
 
 ```bash
 #!/bin/bash
+# Simple menu using case
 
-# Define variables
-x=10
-y=20
+echo "Enter your choice: "
+echo "1 - Start"
+echo "2 - Stop"
+echo "3 - Restart"
+read CHOICE
 
-# Check if both conditions are true
-if [ "$x" -eq 10 ] && [ "$y" -eq 20 ]; then
-    echo "Both conditions are true."
-else
-    echo "At least one condition is false."
-fi
+case $CHOICE in
+    1)
+        echo "Starting the service..."
+        ;;
+    2)
+        echo "Stopping the service..."
+        ;;
+    3)
+        echo "Restarting the service..."
+        ;;
+    *)
+        echo "Invalid choice."
+        ;;
+esac
 ```
 
-5. **Using Test Operators**:
+In this example, the script presents a menu and uses `case` to execute different commands based on the user's input.
+
+### 5. **Logical Operators**
+
+You can combine conditions using logical operators:
+
+- **AND (`-a` or `&&`)**: True if both conditions are true.
+- **OR (`-o` or `||`)**: True if at least one condition is true.
+- **NOT (`!`)**: Inverts the result of a condition.
+
+#### Example: Using Logical Operators
 
 ```bash
 #!/bin/bash
+# Check multiple conditions using AND and OR
 
-# Define variables
-file="example.txt"
+AGE=25
+CITY="New York"
 
-# Check if file exists and is readable
-if [ -r "$file" ]; then
-    echo "File exists and is readable."
+if [ $AGE -gt 18 ] && [ "$CITY" = "New York" ]; then
+    echo "You are older than 18 and live in New York."
 else
-    echo "File does not exist or is not readable."
+    echo "Either you're younger than 18 or you don't live in New York."
 fi
 ```
-Certainly! Conditional statements (if/else) are fundamental in shell scripting for making decisions based on certain conditions. Here are additional use cases of conditional statements in shell scripting:
 
-1. **Checking File Existence**:
+Here, the script checks if the user is older than 18 **and** lives in New York. Both conditions must be true for the first message to be printed.
+
+### Comparison Operators in Conditional Statements
+
+Here are some common comparison operators used in shell scripting:
+
+#### **Numeric Comparison Operators**
+- **`-eq`**: Equal to
+- **`-ne`**: Not equal to
+- **`-lt`**: Less than
+- **`-le`**: Less than or equal to
+- **`-gt`**: Greater than
+- **`-ge`**: Greater than or equal to
+
+#### **String Comparison Operators**
+- **`=`**: Equal to
+- **`!=`**: Not equal to
+- **`-z`**: Checks if the string is empty
+- **`-n`**: Checks if the string is not empty
+
+### Example: Numeric and String Comparison
 
 ```bash
-# Check if a file exists
-file="example.txt"
-if [ -e "$file" ]; then
-    echo "File $file exists."
-else
-    echo "File $file does not exist."
+#!/bin/bash
+# Example of numeric and string comparison
+
+NUM1=5
+NUM2=10
+STRING1="Hello"
+STRING2="World"
+
+# Numeric comparison
+if [ $NUM1 -lt $NUM2 ]; then
+    echo "$NUM1 is less than $NUM2"
+fi
+
+# String comparison
+if [ "$STRING1" != "$STRING2" ]; then
+    echo "$STRING1 is not equal to $STRING2"
 fi
 ```
 
-2. **Checking Directory Existence**:
-
-```bash
-# Check if a directory exists
-directory="example_dir"
-if [ -d "$directory" ]; then
-    echo "Directory $directory exists."
-else
-    echo "Directory $directory does not exist."
-fi
+Output:
 ```
-
-3. **Checking File Permissions**:
-
-```bash
-# Check if a file is writable
-file="example.txt"
-if [ -w "$file" ]; then
-    echo "File $file is writable."
-else
-    echo "File $file is not writable."
-fi
+5 is less than 10
+Hello is not equal to World
 ```
-
-4. **Checking Command Exit Status**:
-
-```bash
-# Check the exit status of a command
-if ls /nonexistent_file; then
-    echo "Command executed successfully."
-else
-    echo "Command failed."
-fi
-```
-
-5. **Comparing Numeric Values**:
-
-```bash
-# Compare two numeric values
-value1=10
-value2=20
-if [ $value1 -lt $value2 ]; then
-    echo "$value1 is less than $value2."
-else
-    echo "$value1 is greater than or equal to $value2."
-fi
-```
-
-6. **Comparing String Values**:
-
-```bash
-# Compare two string values
-string1="hello"
-string2="world"
-if [ "$string1" == "$string2" ]; then
-    echo "Strings are equal."
-else
-    echo "Strings are not equal."
-fi
-```
-
-7. **Checking Command-Line Arguments**:
-
-```bash
-# Check if a command-line argument is provided
-if [ $# -eq 0 ]; then
-    echo "No command-line arguments provided."
-else
-    echo "Command-line arguments provided: $@"
-fi
-```
-
-8. **Nested if/else Statements**:
-
-```bash
-# Nested if/else statements
-number=15
-if [ $number -lt 10 ]; then
-    echo "Number is less than 10."
-elif [ $number -eq 10 ]; then
-    echo "Number is equal to 10."
-else
-    echo "Number is greater than 10."
-fi
-```
-
-9. **Using Logical Operators**:
-
-```bash
-# Using logical operators (AND, OR)
-age=25
-if [ $age -ge 18 ] && [ $age -le 30 ]; then
-    echo "Age is between 18 and 30."
-else
-    echo "Age is not between 18 and 30."
-fi
-```
-
-These examples demonstrate various use cases of conditional statements (if/else) in shell scripting for making decisions based on conditions. They provide flexibility and control flow in executing commands and scripts based on specific criteria.
