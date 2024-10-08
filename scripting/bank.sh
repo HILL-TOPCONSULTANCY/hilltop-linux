@@ -60,7 +60,7 @@ function review_details() {
   	read -p "Do you confirm the review details are correct? (yes/no): " confirm
   	if [ "$confirm == "yes" ]; then
   		break
-  	elif [ "$confirm == "no" ]
+  	elif [ "$confirm == "no" ]; then
   		echo "Please restart the process and correct your details"
   		exit 1
   	else 
