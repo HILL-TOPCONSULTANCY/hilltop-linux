@@ -1,271 +1,452 @@
 
-1. **Add User (`useradd`)**: Create a new user account.
+---
 
-   ```bash
-   sudo useradd username
-   ```
+### **1. Add a User (`useradd`)**
+Create a new user account.
 
-2. **Add User with Home Directory (`useradd -m`)**: Create a new user account with a home directory.
+**Command:**
+```bash
+sudo useradd username
+```
 
-   ```bash
-   sudo useradd -m username
-   ```
+**Example:**
+```bash
+sudo useradd john
+```
 
-3. **Set Password for User (`passwd`)**: Set or change the password for a user account.
+**Scenario:**  
+You need to create a new user account for a developer named "john" who will be working on the server.
 
-   ```bash
-   sudo passwd username
-   ```
+---
 
-4. **Delete User (`userdel`)**: Delete a user account.
+### **2. Add a User with a Home Directory (`useradd -m`)**
+Create a new user account with a home directory.
 
-   ```bash
-   sudo userdel username
-   ```
+**Command:**
+```bash
+sudo useradd -m username
+```
 
-5. **Delete User with Home Directory (`userdel -r`)**: Delete a user account along with its home directory.
+**Example:**
+```bash
+sudo useradd -m john
+```
 
-   ```bash
-   sudo userdel -r username
-   ```
+**Scenario:**  
+You want to create a user account for "john" and ensure they have a home directory (`/home/john`) for storing files.
 
-6. **Modify User Account (`usermod`)**: Modify user account properties such as username, home directory, or shell.
+---
 
-   ```bash
-   sudo usermod -d /new/home/directory username
-   ```
+### **3. Set or Change a User's Password (`passwd`)**
+Set or change the password for a user account.
 
-7. **Change User ID (`usermod -u`)**: Change the user ID of a user account.
+**Command:**
+```bash
+sudo passwd username
+```
 
-   ```bash
-   sudo usermod -u new_uid username
-   ```
+**Example:**
+```bash
+sudo passwd john
+```
 
-8. **Change Group ID (`usermod -g`)**: Change the primary group ID of a user account.
+**Scenario:**  
+You need to set a password for the new user "john" or update their existing password.
 
-   ```bash
-   sudo usermod -g new_gid username
-   ```
+---
 
-9. **List Users (`cat /etc/passwd`)**: Display a list of user accounts.
+### **4. Delete a User (`userdel`)**
+Delete a user account.
 
-   ```bash
-   cat /etc/passwd
-   ```
+**Command:**
+```bash
+sudo userdel username
+```
 
-10. **List Groups (`cat /etc/group`)**: Display a list of groups.
+**Example:**
+```bash
+sudo userdel john
+```
 
-    ```bash
-    cat /etc/group
-    ```
+**Scenario:**  
+The user "john" no longer needs access to the server, so you delete their account.
 
-11. **Add User to Group (`usermod -aG`)**: Add a user to a supplementary group.
+---
 
-    ```bash
-    sudo usermod -aG groupname username
-    ```
+### **5. Delete a User and Their Home Directory (`userdel -r`)**
+Delete a user account along with their home directory.
 
-12. **Remove User from Group (`gpasswd -d`)**: Remove a user from a group.
+**Command:**
+```bash
+sudo userdel -r username
+```
 
-    ```bash
-    sudo gpasswd -d username groupname
-    ```
+**Example:**
+```bash
+sudo userdel -r john
+```
 
-13. **Display User's Groups (`groups`)**: Display the groups a user belongs to.
+**Scenario:**  
+You want to remove "john" and all their files from the server.
 
-    ```bash
-    groups username
-    ```
+---
 
-14. **Change User's Login Shell (`chsh`)**: Change the login shell for a user account.
+### **6. Modify a User's Properties (`usermod`)**
+Modify user account properties, such as username, home directory, or shell.
 
-    ```bash
-    sudo chsh -s /path/to/shell username
-    ```
+**Command:**
+```bash
+sudo usermod -d /new/home/directory username
+```
 
-15. **Lock User Account (`passwd -l`)**: Lock a user account, preventing login by setting an invalid password.
+**Example:**
+```bash
+sudo usermod -d /home/john_new john
+```
 
-   ```bash
-   sudo passwd -l username
-   ```
+**Scenario:**  
+You want to change the home directory of the user "john" to `/home/john_new`.
 
-16. **Unlock User Account (`passwd -u`)**: Unlock a previously locked user account.
+---
 
-   ```bash
-   sudo passwd -u username
-   ```
+### **7. Change a User's UID (`usermod -u`)**
+Change the user ID (UID) of a user account.
 
-17. **Force User to Change Password at Next Login (`chage`)**: Set an expiration date for a user's password, forcing them to change it at next login.
+**Command:**
+```bash
+sudo usermod -u new_uid username
+```
 
-   ```bash
-   sudo chage -d 0 username
-   ```
+**Example:**
+```bash
+sudo usermod -u 1005 john
+```
 
-18. **Set Password Expiration (`chage`)**: Set the maximum number of days a password is valid for a user account.
+**Scenario:**  
+You need to change the UID of "john" to `1005` for compatibility with another system.
 
-   ```bash
-   sudo chage -M 90 username
-   ```
+---
 
-19. **Display User Account Expiration Information (`chage -l`)**: Display account aging information including password expiration dates.
+### **8. Change a User's Primary Group (`usermod -g`)**
+Change the primary group of a user account.
 
-   ```bash
-   sudo chage -l username
-   ```
+**Command:**
+```bash
+sudo usermod -g new_gid username
+```
 
-20. **Modify User Account Expiration Date (`chage -E`)**: Set the expiration date for a user account.
+**Example:**
+```bash
+sudo usermod -g 1001 john
+```
 
-   ```bash
-   sudo chage -E "YYYY-MM-DD" username
-   ```
+**Scenario:**  
+You want to change the primary group of "john" to `1001`.
 
-21. **Add User to sudo Group (`usermod -aG`)**: Grant sudo privileges to a user by adding them to the sudo group.
+---
 
-   ```bash
-   sudo usermod -aG sudo username
-   ```
+### **9. Add a User to a Supplementary Group (`usermod -aG`)**
+Add a user to a supplementary group.
 
-22. **Remove User from sudo Group (`gpasswd -d`)**: Remove sudo privileges from a user by removing them from the sudo group.
+**Command:**
+```bash
+sudo usermod -aG groupname username
+```
 
-   ```bash
-   sudo gpasswd -d username sudo
-   ```
+**Example:**
+```bash
+sudo usermod -aG developers john
+```
 
-23. **Limit User Logins (`usermod -L`)**: Prevent a user from logging in by locking their account.
+**Scenario:**  
+You want to add "john" to the `developers` group to grant access to shared resources.
 
-   ```bash
-   sudo usermod -L username
-   ```
+---
 
-24. **Restore User Logins (`usermod -U`)**: Restore login access for a previously locked user account.
+### **10. Remove a User from a Group (`gpasswd -d`)**
+Remove a user from a group.
 
-    ```bash
-    sudo usermod -U username
-    ```
+**Command:**
+```bash
+sudo gpasswd -d username groupname
+```
 
-25. **Add Comment to User Account (`usermod -c`)**: Add a comment or description to a user account.
+**Example:**
+```bash
+sudo gpasswd -d john developers
+```
 
-    ```bash
-    sudo usermod -c "Description" username
-    ```
+**Scenario:**  
+You want to remove "john" from the `developers` group.
 
-26. **Set User Account Expiry Date (`usermod -e`)**: Set the expiry date for a user account.
+---
 
-    ```bash
-    sudo usermod -e "YYYY-MM-DD" username
-    ```
+### **11. Lock a User Account (`passwd -l`)**
+Lock a user account to prevent login.
 
-27. **Change User's Primary Group (`usermod -g`)**: Change the primary group of a user account.
+**Command:**
+```bash
+sudo passwd -l username
+```
 
-   ```bash
-   sudo usermod -g new_primary_group username
-   ```
+**Example:**
+```bash
+sudo passwd -l john
+```
 
-28. **List User's Login Information (`finger`)**: Display detailed information about a user's login status, including their full name, login shell, and last login time.
+**Scenario:**  
+You want to temporarily lock "john's" account while they are on leave.
 
-   ```bash
-   finger username
-   ```
+---
 
-29. **Add User to System Without Home Directory (`useradd -M`)**: Create a user account without creating a home directory.
+### **12. Unlock a User Account (`passwd -u`)**
+Unlock a previously locked user account.
 
-   ```bash
-   sudo useradd -M username
-   ```
+**Command:**
+```bash
+sudo passwd -u username
+```
 
-30. **Create User with Specific UID and GID (`useradd -u -o`)**: Create a user account with a specific user ID (UID) and group ID (GID) while allowing duplicate IDs.
+**Example:**
+```bash
+sudo passwd -u john
+```
 
-   ```bash
-   sudo useradd -u uid -g gid -o username
-   ```
+**Scenario:**  
+"John" is back from leave, and you want to restore their access.
 
-31. **List Users Logged In (`who`)**: Display a list of users currently logged into the system.
+---
 
-   ```bash
-   who
-   ```
+### **13. Force a User to Change Password at Next Login (`chage -d 0`)**
+Force a user to change their password at the next login.
 
-32. **List Users Logged In with Detailed Information (`w`)**: Display a list of users currently logged into the system along with detailed information such as login time and CPU usage.
+**Command:**
+```bash
+sudo chage -d 0 username
+```
 
-   ```bash
-   w
-   ```
+**Example:**
+```bash
+sudo chage -d 0 john
+```
 
-33. **Change User's Password Expiry (`chage -m`)**: Set the minimum number of days before a user can change their password again.
+**Scenario:**  
+You want to ensure "john" updates their password for security reasons.
 
-   ```bash
-   sudo chage -m min_days username
-   ```
+---
 
-34. **Change User's Password Inactivity Expiry (`chage -i`)**: Set the number of days of inactivity after which the user's account will be locked.
+### **14. Set Password Expiration (`chage -M`)**
+Set the maximum number of days a password is valid.
 
-   ```bash
-   sudo chage -i inactivity_days username
-   ```
+**Command:**
+```bash
+sudo chage -M days username
+```
 
-35. **Change User's Account Expiry Date (`chage -E`)**: Set the account expiry date for a user account.
+**Example:**
+```bash
+sudo chage -M 90 john
+```
 
-   ```bash
-   sudo chage -E expiry_date username
-   ```
+**Scenario:**  
+You want to enforce a password change every 90 days for "john".
 
-36. **Check User's Password Status (`passwd -S`)**: Display the status of a user's password, including password aging information.
+---
 
-    ```bash
-    passwd -S username
-    ```
+### **15. Add a User to the `sudo` Group (`usermod -aG sudo`)**
+Grant sudo privileges to a user.
 
-2. **passwd**: This command allows users to change their password or sets a new password for a user account.
-   ```bash
-   sudo passwd username
-   ```
+**Command:**
+```bash
+sudo usermod -aG sudo username
+```
 
-3. **usermod**: This command is used to modify user account attributes like username, group membership, home directory, etc.
-   ```bash
-   sudo usermod -aG groupname username
-   ```
+**Example:**
+```bash
+sudo usermod -aG sudo john
+```
 
-4. **userdel**: This command is used to delete a user account from the system.
-   ```bash
-   sudo userdel username
-   ```
+**Scenario:**  
+You want to give "john" administrative privileges.
 
-5. **groupadd**: This command is used to create a new group in Linux.
-   ```bash
-   sudo groupadd groupname
-   ```
+---
 
-6. **groupmod**: This command is used to modify a group's attributes, such as group name or GID.
-   ```bash
-   sudo groupmod -n newgroupname oldgroupname
-   ```
+### **16. Remove a User from the `sudo` Group (`gpasswd -d`)**
+Revoke sudo privileges from a user.
 
-7. **groupdel**: This command is used to delete a group from the system.
-   ```bash
-   sudo groupdel groupname
-   ```
+**Command:**
+```bash
+sudo gpasswd -d username sudo
+```
 
-8. **chown**: This command is used to change the owner and group of files and directories.
-   ```bash
-   sudo chown username:groupname filename
-   ```
+**Example:**
+```bash
+sudo gpasswd -d john sudo
+```
 
-9. **chmod**: This command is used to change the permissions of files and directories.
-   ```bash
-   sudo chmod permissions filename
-   ```
+**Scenario:**  
+You want to remove "john's" administrative privileges.
 
-10. **su**: This command is used to switch to another user account from the current terminal session.
-    ```bash
-    su username
-    ```
+---
 
-11. **sudo**: This command allows users to execute commands with the security privileges of another user, typically the superuser (root).
-    ```bash
-    sudo command
-    ```
+### **17. List All Users (`cat /etc/passwd`)**
+Display a list of all user accounts.
 
-12. **chage**: This command is used to view and change user password expiry information.
-    ```bash
-    sudo chage -l username
-    ```
+**Command:**
+```bash
+cat /etc/passwd
+```
+
+**Example:**
+```bash
+cat /etc/passwd | grep /home
+```
+
+**Scenario:**  
+You want to view all users with home directories.
+
+---
+
+### **18. List All Groups (`cat /etc/group`)**
+Display a list of all groups.
+
+**Command:**
+```bash
+cat /etc/group
+```
+
+**Example:**
+```bash
+cat /etc/group | grep developers
+```
+
+**Scenario:**  
+You want to check which users belong to the `developers` group.
+
+---
+
+### **19. Check User's Group Membership (`groups`)**
+Display the groups a user belongs to.
+
+**Command:**
+```bash
+groups username
+```
+
+**Example:**
+```bash
+groups john
+```
+
+**Scenario:**  
+You want to verify which groups "john" is a member of.
+
+---
+
+### **20. Change User's Login Shell (`chsh`)**
+Change the login shell for a user.
+
+**Command:**
+```bash
+sudo chsh -s /path/to/shell username
+```
+
+**Example:**
+```bash
+sudo chsh -s /bin/bash john
+```
+
+**Scenario:**  
+You want to change "john's" default shell to `/bin/bash`.
+
+---
+
+### **21. Set User Account Expiry (`usermod -e`)**
+Set an expiry date for a user account.
+
+**Command:**
+```bash
+sudo usermod -e YYYY-MM-DD username
+```
+
+**Example:**
+```bash
+sudo usermod -e 2023-12-31 john
+```
+
+**Scenario:**  
+You want to set "john's" account to expire on December 31, 2023.
+
+---
+
+### **22. Check User's Password Aging Information (`chage -l`)**
+Display password aging information for a user.
+
+**Command:**
+```bash
+sudo chage -l username
+```
+
+**Example:**
+```bash
+sudo chage -l john
+```
+
+**Scenario:**  
+You want to check when "john's" password will expire.
+
+---
+
+### **23. Create a User with a Specific UID (`useradd -u`)**
+Create a user with a specific UID.
+
+**Command:**
+```bash
+sudo useradd -u uid username
+```
+
+**Example:**
+```bash
+sudo useradd -u 1500 john
+```
+
+**Scenario:**  
+You need to create a user "john" with a specific UID (`1500`) for system integration.
+
+---
+
+### **24. Create a User with a Specific GID (`useradd -g`)**
+Create a user with a specific GID.
+
+**Command:**
+```bash
+sudo useradd -g gid username
+```
+
+**Example:**
+```bash
+sudo useradd -g 1001 john
+```
+
+**Scenario:**  
+You want to create a user "john" with a specific primary group (`1001`).
+
+---
+
+### **25. List Logged-In Users (`who`)**
+Display a list of users currently logged in.
+
+**Command:**
+```bash
+who
+```
+
+**Example:**
+```bash
+who
+```
+
+**Scenario:**  
+You want to see who is currently logged into the server.
+
+---
