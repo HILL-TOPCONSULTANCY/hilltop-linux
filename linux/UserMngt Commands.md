@@ -450,3 +450,291 @@ who
 You want to see who is currently logged into the server.
 
 ---
+# USING ELEVATED PRIVELEDGE
+
+---
+
+### **1. Create a New User**
+To create a new user, use the `useradd` command. You can also create a home directory for the user with the `-m` flag.
+
+**Command:**
+```bash
+sudo useradd -m username
+```
+
+**Example:**
+```bash
+sudo useradd -m mambo
+```
+
+**Scenario:**  
+You want to create a new user named "mambo" with a home directory (`/home/mambo`).
+
+---
+
+### **2. Set a Password for the New User**
+After creating the user, set a password using the `passwd` command.
+
+**Command:**
+```bash
+sudo passwd username
+```
+
+**Example:**
+```bash
+sudo passwd mambo
+```
+
+**Scenario:**  
+You need to set a secure password for the new user "mambo".
+
+---
+
+### **3. Grant Sudo Privileges to the User**
+To give the user sudo privileges, add them to the `wheel` group (or `sudo` group, depending on the system configuration).
+
+**Command:**
+```bash
+sudo usermod -aG wheel username
+```
+
+**Example:**
+```bash
+sudo usermod -aG wheel mambo
+```
+
+**Scenario:**  
+You want to grant "mammbo" administrative privileges so they can perform tasks requiring root access.
+
+---
+
+### **4. Verify Sudo Access**
+To verify that the user has sudo access, switch to the user and test a command that requires sudo.
+
+#### **Switch to the User**
+Use the `su` command to switch to the new user.
+
+**Command:**
+```bash
+su - username
+```
+
+**Example:**
+```bash
+su - mambo
+```
+
+#### **Test Sudo Access**
+Run a command with `sudo` to confirm the user has the necessary privileges.
+
+**Command:**
+```bash
+sudo whoami
+```
+
+**Expected Output:**
+```
+root
+```
+
+**Scenario:**  
+You want to confirm that "john" can execute commands with sudo privileges.
+
+---
+
+### **5. Test What the User Can Do**
+Once the user has sudo access, you can test their permissions by running various commands.
+
+#### **Example Commands:**
+- Install a package:
+  ```bash
+  sudo yum install nano
+  ```
+- Restart a service:
+  ```bash
+  sudo systemctl restart httpd
+  ```
+- View system logs:
+  ```bash
+  sudo tail -f /var/log/messages
+  ```
+
+**Scenario:**  
+You want to ensure "mambo" can perform administrative tasks like installing software or restarting services.
+
+---
+
+### **6. Switch to Another User**
+To switch to another user, use the `su` command. You’ll need the target user’s password unless you’re switching from the root user.
+
+**Command:**
+```bash
+su - username
+```
+
+**Example:**
+```bash
+su - mambo
+```
+
+**Scenario:**  
+You are logged in as the root user and want to switch to "mambo" to test their permissions.
+
+---
+
+### **7. Switch Back to the Original User**
+To switch back to the original user, use the `exit` command or `su` again.
+
+**Command:**
+```bash
+exit
+```
+
+**Example:**
+```bash
+exit
+```
+
+**Scenario:**  
+You are logged in as "john" and want to return to the root user.
+
+---
+
+### **8. Remove Sudo Privileges**
+If you need to revoke sudo privileges from a user, remove them from the `wheel` group.
+
+**Command:**
+```bash
+sudo gpasswd -d username wheel
+```
+
+**Example:**
+```bash
+sudo gpasswd -d mambo wheel
+```
+
+**Scenario:**  
+You want to remove "mambo's" administrative privileges.
+
+---
+
+### **9. Lock and Unlock a User Account**
+If you need to temporarily disable a user’s access, you can lock their account.
+
+#### **Lock a User Account**
+**Command:**
+```bash
+sudo passwd -l username
+```
+
+**Example:**
+```bash
+sudo passwd -l mambo
+```
+
+**Scenario:**  
+You want to prevent "mambo" from logging in temporarily.
+
+#### **Unlock a User Account**
+**Command:**
+```bash
+sudo passwd -u username
+```
+
+**Example:**
+```bash
+sudo passwd -u mambo
+```
+
+**Scenario:**  
+You want to restore "mambo's" access after a temporary lock.
+
+---
+
+### **10. Delete a User**
+If a user no longer needs access, you can delete their account.
+
+#### **Delete a User Without Removing Their Home Directory**
+**Command:**
+```bash
+sudo userdel username
+```
+
+**Example:**
+```bash
+sudo userdel mambo
+```
+
+**Scenario:**  
+You want to remove "john's" account but keep their files for backup.
+
+#### **Delete a User and Their Home Directory**
+**Command:**
+```bash
+sudo userdel -r username
+```
+
+**Example:**
+```bash
+sudo userdel -r mambo
+```
+
+**Scenario:**  
+You want to completely remove "john" and all their files from the system.
+
+---
+
+### **11. Practical Scenarios**
+
+#### **Scenario 1: Onboarding a New Developer**
+1. Create a new user:
+   ```bash
+   sudo useradd -m dev_alice
+   ```
+2. Set a password:
+   ```bash
+   sudo passwd dev_alice
+   ```
+3. Grant sudo access:
+   ```bash
+   sudo usermod -aG wheel dev_alice
+   ```
+4. Test sudo access:
+   ```bash
+   su - dev_alice
+   sudo yum install git
+   ```
+
+#### **Scenario 2: Temporarily Disabling a User**
+1. Lock the account:
+   ```bash
+   sudo passwd -l dev_alice
+   ```
+2. Unlock the account when needed:
+   ```bash
+   sudo passwd -u dev_alice
+   ```
+
+#### **Scenario 3: Removing a User**
+1. Delete the user and their home directory:
+   ```bash
+   sudo userdel -r dev_alice
+   ```
+
+---
+
+### **12. Summary of Key Commands**
+| **Action**                          | **Command**                                      |
+|-------------------------------------|-------------------------------------------------|
+| Create a new user                   | `sudo useradd -m username`                      |
+| Set a password                      | `sudo passwd username`                          |
+| Grant sudo privileges               | `sudo usermod -aG wheel username`               |
+| Switch to another user              | `su - username`                                 |
+| Test sudo access                    | `sudo whoami`                                   |
+| Lock a user account                 | `sudo passwd -l username`                       |
+| Unlock a user account               | `sudo passwd -u username`                       |
+| Delete a user                       | `sudo userdel username`                         |
+| Delete a user and home directory    | `sudo userdel -r username`                      |
+| Remove sudo privileges              | `sudo gpasswd -d username wheel`                |
+
+---
