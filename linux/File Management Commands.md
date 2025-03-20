@@ -39,6 +39,97 @@ You want to create a file with some initial content.
 ---
 
 ## **2. File Permissions**
+### **Understanding File Permissions in Linux**
+
+File permissions in Linux determine who can **read**, **write**, and **execute** a file or directory. Permissions are assigned to three categories of users:
+
+1. **Owner**: The user who owns the file.
+2. **Group**: Users who belong to the file's group.
+3. **Others**: All other users on the system.
+
+---
+
+### **Types of Permissions**
+There are three basic types of permissions:
+
+1. **Read (`r`)**: Allows viewing the contents of a file or listing the contents of a directory.
+2. **Write (`w`)**: Allows modifying a file or adding/removing files in a directory.
+3. **Execute (`x`)**: Allows running a file as a program or accessing a directory.
+
+---
+
+### **Permission Notation**
+Permissions are represented in two ways:
+1. **Symbolic Notation**: Uses letters (`r`, `w`, `x`) and symbols (`-` for no permission).
+   Example: `rwxr-xr--`
+2. **Numeric Notation**: Uses a 3-digit number (e.g., `755`), where each digit represents the permissions for the owner, group, and others.
+
+---
+
+### **How to Calculate Numeric Permissions**
+Each permission type has a numeric value:
+- **Read (`r`)**: 4
+- **Write (`w`)**: 2
+- **Execute (`x`)**: 1
+
+To calculate the numeric permission:
+1. Add the values of the permissions for each category (owner, group, others).
+2. Combine the three numbers into a 3-digit code.
+
+**Example:**
+- `rwxr-xr--` translates to:
+  - Owner: `rwx` = 4 + 2 + 1 = **7**
+  - Group: `r-x` = 4 + 0 + 1 = **5**
+  - Others: `r--` = 4 + 0 + 0 = **4**
+- Numeric permission: **754**
+
+---
+
+### **Example Permissions**
+| **Symbolic** | **Numeric** | **Explanation**                                                                 |
+|--------------|-------------|---------------------------------------------------------------------------------|
+| `rwxr-xr-x`  | 755         | Owner: full access; Group and Others: read and execute.                         |
+| `rw-r--r--`  | 644         | Owner: read and write; Group and Others: read-only.                             |
+| `rwxrwxrwx`  | 777         | Owner, Group, and Others: full access (not recommended for security reasons).   |
+| `rw-------`  | 600         | Owner: read and write; Group and Others: no access.                             |
+
+---
+
+### **Viewing Permissions**
+Use the `ls -l` command to view file permissions.
+
+**Example:**
+```bash
+ls -l myfile.txt
+```
+
+**Output:**
+```
+-rw-r--r-- 1 user group 0 Oct 10 12:00 myfile.txt
+```
+
+- `-rw-r--r--`: Permissions (owner: `rw-`, group: `r--`, others: `r--`).
+- `1`: Number of hard links.
+- `user`: Owner of the file.
+- `group`: Group associated with the file.
+- `0`: File size.
+- `Oct 10 12:00`: Last modified timestamp.
+- `myfile.txt`: File name.
+
+---
+
+### **Changing Permissions**
+Use the `chmod` command to change permissions.
+
+**Example:**
+```bash
+chmod 755 myfile.txt
+```
+
+This sets the permissions to `rwxr-xr-x`.
+
+---
+
 ### **View File Permissions (`ls -l`)**
 Display file permissions and ownership.
 
@@ -59,29 +150,6 @@ ls -l myfile.txt
 
 **Scenario:**  
 You want to check the permissions of `myfile.txt`.
-
----
-
-### **Change File Permissions (`chmod`)**
-Modify file permissions using symbolic or numeric mode.
-
-**Command:**
-```bash
-chmod permissions filename
-```
-
-**Example (Symbolic Mode):**
-```bash
-chmod u+x myfile.txt
-```
-
-**Example (Numeric Mode):**
-```bash
-chmod 755 myfile.txt
-```
-
-**Scenario:**  
-You want to make `myfile.txt` executable by the owner.
 
 ---
 
