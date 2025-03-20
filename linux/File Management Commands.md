@@ -1,175 +1,441 @@
-1. **Copy Files (`cp`)**: Copy files from one location to another.
 
-   ```bash
-   cp source_file destination_file
-   ```
+---
 
-2. **Move/Rename Files (`mv`)**: Move or rename files.
+## **1. Creating Files**
+### **Create an Empty File (`touch`)**
+Create an empty file or update the timestamp of an existing file.
 
-   ```bash
-   mv old_file new_file
-   ```
+**Command:**
+```bash
+touch filename
+```
 
-3. **Remove Files (`rm`)**: Delete files.
+**Example:**
+```bash
+touch myfile.txt
+```
 
-   ```bash
-   rm file_name
-   ```
+**Scenario:**  
+You need to create a new file named `myfile.txt` for logging purposes.
 
-4. **Create Empty File (`touch`)**: Create an empty file or update the access and modification timestamps of an existing file.
+---
 
-   ```bash
-   touch filename
-   ```
+### **Create a File with Content (`echo` or `cat`)**
+Create a file and add content to it.
 
-5. **Display File Contents (`cat`)**: Output the contents of a file.
+**Command:**
+```bash
+echo "Hello, World!" > filename
+```
 
-   ```bash
-   cat filename
-   ```
+**Example:**
+```bash
+echo "This is a sample file." > sample.txt
+```
 
-6. **View First Few Lines of a File (`head`)**: Display the first few lines of a file.
+**Scenario:**  
+You want to create a file with some initial content.
 
-   ```bash
-   head filename
-   ```
+---
 
-7. **View Last Few Lines of a File (`tail`)**: Display the last few lines of a file.
+## **2. File Permissions**
+### **View File Permissions (`ls -l`)**
+Display file permissions and ownership.
 
-   ```bash
-   tail filename
-   ```
+**Command:**
+```bash
+ls -l filename
+```
 
-8. **Display Contents of File in Reverse Order (`tac`)**: Output lines of a file in reverse.
+**Example:**
+```bash
+ls -l myfile.txt
+```
 
-   ```bash
-   tac filename
-   ```
+**Output:**
+```
+-rw-r--r-- 1 user group 0 Oct 10 12:00 myfile.txt
+```
 
-9. **Concatenate Files and Output (`cat`)**: Concatenate files and output to the terminal or another file.
+**Scenario:**  
+You want to check the permissions of `myfile.txt`.
 
-   ```bash
-   cat file1 file2 > combined_file
-   ```
+---
 
-10. **View File Content Page by Page (`less`)**: View the contents of a file page by page with navigation.
+### **Change File Permissions (`chmod`)**
+Modify file permissions using symbolic or numeric mode.
 
-    ```bash
-    less filename
-    ```
+**Command:**
+```bash
+chmod permissions filename
+```
 
-11. **Count Number of Lines, Words, or Characters in a File (`wc`)**: Display the number of lines, words, and characters in a file.
+**Example (Symbolic Mode):**
+```bash
+chmod u+x myfile.txt
+```
 
-    ```bash
-    wc filename
-    ```
+**Example (Numeric Mode):**
+```bash
+chmod 755 myfile.txt
+```
 
-1. **Copy Files and Directories Recursively (`cp -r`)**: Copy files and directories recursively.
+**Scenario:**  
+You want to make `myfile.txt` executable by the owner.
 
-   ```bash
-   cp -r source_directory destination_directory
-   ```
+---
 
-2. **Copy Files and Directories with Progress (`rsync -r --progress`)**: Synchronize files and directories between two locations with progress indication.
+### **Change File Ownership (`chown`)**
+Change the owner and group of a file.
 
-   ```bash
-   rsync -r --progress source_directory destination_directory
-   ```
+**Command:**
+```bash
+sudo chown owner:group filename
+```
 
-3. **Move/Rename Files or Directories (`mv`)**: Move or rename files or directories.
+**Example:**
+```bash
+sudo chown john:developers myfile.txt
+```
 
-   ```bash
-   mv old_file new_file
-   ```
+**Scenario:**  
+You want to change the owner of `myfile.txt` to `john` and the group to `developers`.
 
-4. **Remove Files (`rm`)**: Delete files.
+---
 
-   ```bash
-   rm filename
-   ```
+## **3. Moving and Copying Files**
+### **Move Files (`mv`)**
+Move or rename files.
 
-5. **Remove Files with Confirmation (`rm -i`)**: Delete files with a confirmation prompt.
+**Command:**
+```bash
+mv source destination
+```
 
-   ```bash
-   rm -i filename
-   ```
+**Example:**
+```bash
+mv myfile.txt /home/user/documents/
+```
 
-6. **Remove Files and Directories Recursively (`rm -r`)**: Delete files and directories recursively.
+**Scenario:**  
+You want to move `myfile.txt` to the `documents` directory.
 
-   ```bash
-   rm -r directory_name
-   ```
+---
 
-7. **Remove Files and Directories Interactively (`rm -ri`)**: Delete files and directories interactively with a confirmation prompt.
+### **Copy Files (`cp`)**
+Copy files to another location.
 
-   ```bash
-   rm -ri directory_name
-   ```
+**Command:**
+```bash
+cp source destination
+```
 
-8. **Empty File Contents (`truncate -s 0`)**: Empty the contents of a file without deleting it.
+**Example:**
+```bash
+cp myfile.txt /backup/
+```
 
-   ```bash
-   truncate -s 0 filename
-   ```
+**Scenario:**  
+You want to create a backup of `myfile.txt` in the `/backup` directory.
 
-9. **Find Files by Content (`grep`)**: Search for text within files.
+---
 
-   ```bash
-   grep "search_term" filename
-   ```
+### **Create Symbolic Links (`ln -s`)**
+Create a symbolic link to a file.
 
-10. **Count Lines, Words, and Characters in a File (`wc`)**: Count the number of lines, words, and characters in a file.
+**Command:**
+```bash
+ln -s target_file link_name
+```
 
-    ```bash
-    wc filename
-    ```
+**Example:**
+```bash
+ln -s /var/log/syslog syslog_link
+```
 
-11. **Concatenate Files (`cat`)**: Combine and display the contents of multiple files.
+**Scenario:**  
+You want to create a shortcut to `/var/log/syslog` named `syslog_link`.
 
-    ```bash
-    cat file1 file2 > merged_file
-    ```
+---
 
-12. **View File Contents Page by Page (`less`)**: View the contents of a file with page navigation.
+## **4. Searching and Filtering Content**
+### **Search for Text in Files (`grep`)**
+Search for a specific pattern in a file.
 
-    ```bash
-    less filename
-    ```
+**Command:**
+```bash
+grep "pattern" filename
+```
 
-13. **View File Contents in Reverse Order (`tac`)**: Display the contents of a file in reverse order.
+**Example:**
+```bash
+grep "error" /var/log/syslog
+```
 
-    ```bash
-    tac filename
-    ```
+**Scenario:**  
+You want to find all lines containing the word "error" in the system log.
 
-14. **Sort File Contents (`sort`)**: Sort the lines of a file alphabetically or numerically.
+---
 
-    ```bash
-    sort filename
-    ```
+### **Filter File Content (`awk`)**
+Filter and process text using `awk`.
 
-These additional file management commands provide further options for copying, moving, deleting, and manipulating files and directories in Linux environments, offering greater flexibility and control over file operations.
-12. **Search for Text Within Files (`grep`)**: Search for a specific pattern or text within one or more files.
+**Command:**
+```bash
+awk '/pattern/ {print $1}' filename
+```
 
-    ```bash
-    grep "pattern" file_name
-    ```
+**Example:**
+```bash
+awk '/error/ {print $2}' /var/log/syslog
+```
 
-13. **Find Files by Content (`grep -r`)**: Search for files containing specific text recursively in directories.
+**Scenario:**  
+You want to extract the second column of lines containing "error" in the system log.
 
-    ```bash
-    grep -r "pattern" /path/to/directory
-    ```
+---
 
-14. **Compress Files and Directories (`tar`)**: Create compressed archive files.
+### **View Top Lines of a File (`head`)**
+Display the first few lines of a file.
 
-    ```bash
-    tar -czvf archive_name.tar.gz file1 file2 directory
-    ```
+**Command:**
+```bash
+head filename
+```
 
-15. **Extract Files from Compressed Archive (`tar`)**: Extract files from a compressed archive.
+**Example:**
+```bash
+head /var/log/syslog
+```
 
-    ```bash
-    tar -xzvf archive_name.tar.gz
-    ```
+**Scenario:**  
+You want to view the first 10 lines of the system log.
 
+---
+
+### **View Bottom Lines of a File (`tail`)**
+Display the last few lines of a file.
+
+**Command:**
+```bash
+tail filename
+```
+
+**Example:**
+```bash
+tail /var/log/syslog
+```
+
+**Scenario:**  
+You want to view the last 10 lines of the system log.
+
+---
+
+### **Monitor File Changes in Real-Time (`tail -f`)**
+Monitor a file for new content in real-time.
+
+**Command:**
+```bash
+tail -f filename
+```
+
+**Example:**
+```bash
+tail -f /var/log/syslog
+```
+
+**Scenario:**  
+You want to monitor the system log for new entries.
+
+---
+
+## **5. Editing Files**
+### **Open a File in `vi` Editor**
+Open a file in the `vi` text editor.
+
+**Command:**
+```bash
+vi filename
+```
+
+**Example:**
+```bash
+vi myfile.txt
+```
+
+**Scenario:**  
+You want to edit `myfile.txt` using the `vi` editor.
+
+---
+
+### **Save and Exit in `vi`**
+Save changes and exit the `vi` editor.
+
+1. Press `Esc` to enter command mode.
+2. Type `:wq` and press `Enter`.
+
+**Scenario:**  
+You’ve made changes to a file and want to save and exit.
+
+---
+
+### **Exit Without Saving in `vi`**
+Exit the `vi` editor without saving changes.
+
+1. Press `Esc` to enter command mode.
+2. Type `:q!` and press `Enter`.
+
+**Scenario:**  
+You want to discard changes and exit the editor.
+
+---
+
+### **Delete Content in `vi`**
+Delete lines or characters in the `vi` editor.
+
+- Delete a line: Press `dd`.
+- Delete a character: Press `x`.
+
+**Scenario:**  
+You want to remove unwanted content from a file.
+
+---
+
+### **Append Content in `vi`**
+Add new content to a file in the `vi` editor.
+
+1. Press `i` to enter insert mode.
+2. Add your content.
+3. Press `Esc` to exit insert mode.
+
+**Scenario:**  
+You want to add new text to a file.
+
+---
+
+## **6. Advanced File Operations**
+### **Empty File Content (`truncate`)**
+Empty the contents of a file without deleting it.
+
+**Command:**
+```bash
+truncate -s 0 filename
+```
+
+**Example:**
+```bash
+truncate -s 0 myfile.txt
+```
+
+**Scenario:**  
+You want to clear the contents of `myfile.txt`.
+
+---
+
+### **Count Lines, Words, and Characters (`wc`)**
+Count the number of lines, words, and characters in a file.
+
+**Command:**
+```bash
+wc filename
+```
+
+**Example:**
+```bash
+wc myfile.txt
+```
+
+**Scenario:**  
+You want to analyze the size of `myfile.txt`.
+
+---
+
+### **Sort File Content (`sort`)**
+Sort the lines of a file alphabetically or numerically.
+
+**Command:**
+```bash
+sort filename
+```
+
+**Example:**
+```bash
+sort myfile.txt
+```
+
+**Scenario:**  
+You want to sort the contents of `myfile.txt`.
+
+---
+
+### **Remove Duplicate Lines (`uniq`)**
+Remove duplicate lines from a file.
+
+**Command:**
+```bash
+uniq filename
+```
+
+**Example:**
+```bash
+uniq myfile.txt
+```
+
+**Scenario:**  
+You want to clean up duplicate entries in `myfile.txt`.
+
+---
+
+### **Find Files by Name (`find`)**
+Search for files by name.
+
+**Command:**
+```bash
+find /path/to/search -name "filename"
+```
+
+**Example:**
+```bash
+find /home -name "myfile.txt"
+```
+
+**Scenario:**  
+You want to locate `myfile.txt` in the `/home` directory.
+
+---
+
+### **Remove Directories (`rmdir`)**
+Remove empty directories.
+
+**Command:**
+```bash
+rmdir directory_name
+```
+
+**Example:**
+```bash
+rmdir old_folder
+```
+
+**Scenario:**  
+You want to delete an empty directory named `old_folder`.
+
+---
+
+### **Remove Non-Empty Directories (`rm -r`)**
+Remove directories and their contents.
+
+**Command:**
+```bash
+rm -r directory_name
+```
+
+**Example:**
+```bash
+rm -r old_folder
+```
+
+**Scenario:**  
+You want to delete a directory and all its contents.
+
+---
