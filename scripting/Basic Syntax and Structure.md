@@ -60,35 +60,37 @@ echo "Files: $files"
 ## **1. Arrays (Variables with Multiple Keys)**
 
 ### **Defining an Array**
+To call out the value "John" (the first element) from your array in an `echo` command, you would use:
+
 ```bash
-# Declare an array of personal information
+echo "${person[0]}"
+```
+
+### Explanation:
+1. `${person}` refers to the array variable
+2. `[0]` accesses the first element (array indexes start at 0 in Bash)
+3. The quotes `""` ensure proper handling of spaces/special characters
+
+### Complete Example:
+```bash
+#!/bin/bash
+
+# Declare the array
 person=("John" 30 "male" "john@example.com")
 
-# Alternative syntax
-declare -a person_info=("Alice" 28 "female" "alice@example.com")
+# Access and display the name
+echo "First Name: ${person[0]}" 
+
+# You can also store it in a new variable
+name="${person[0]}"
+echo "The name is $name"  
 ```
 
-### **Accessing Array Elements**
-```bash
-echo "Name: ${person[0]}"      # First element (John)
-echo "Age: ${person[1]}"       # Second element (30)
-echo "Gender: ${person[2]}"    # Third element (male)
-```
+### Accessing Other Elements:
+- `${person[1]}` → 30 (age)
+- `${person[2]}` → "male" (gender) 
+- `${person[3]}` → "john@example.com" (email)
 
-### **Associative Arrays (Key-Value Pairs)**
-```bash
-# Only available in Bash 4+
-declare -A profile=(
-    ["name"]="John"
-    ["age"]=30
-    ["gender"]="male"
-    ["email"]="john@example.com"
-)
-
-# Accessing values by key
-echo "Name: ${profile["name"]}"
-echo "Age: ${profile["age"]}"
-```
 
 ## **2. Variable Naming Rules**
 
