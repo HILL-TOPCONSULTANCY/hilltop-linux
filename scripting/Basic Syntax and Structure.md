@@ -55,10 +55,98 @@ echo "$name is $age years old."
 echo "Files: $files"  
 ```
 
-### **Variable Naming Rules**  
-✔ Start with a letter or `_` (e.g., `var`, `_var`).  
-✔ Case-sensitive (`Name` ≠ `name`).  
-✔ Avoid spaces: `var="value"` , `var = "value"` ❌.  
+# **Variables with Multiple Keys (Arrays) and Naming Rules**
+
+## **1. Arrays (Variables with Multiple Keys)**
+
+### **Defining an Array**
+```bash
+# Declare an array of personal information
+person=("John" 30 "male" "john@example.com")
+
+# Alternative syntax
+declare -a person_info=("Alice" 28 "female" "alice@example.com")
+```
+
+### **Accessing Array Elements**
+```bash
+echo "Name: ${person[0]}"      # First element (John)
+echo "Age: ${person[1]}"       # Second element (30)
+echo "Gender: ${person[2]}"    # Third element (male)
+```
+
+### **Associative Arrays (Key-Value Pairs)**
+```bash
+# Only available in Bash 4+
+declare -A profile=(
+    ["name"]="John"
+    ["age"]=30
+    ["gender"]="male"
+    ["email"]="john@example.com"
+)
+
+# Accessing values by key
+echo "Name: ${profile["name"]}"
+echo "Age: ${profile["age"]}"
+```
+
+## **2. Variable Naming Rules**
+
+### **Valid Names**
+```bash
+firstName="John"     # CamelCase
+last_name="Doe"      # Underscores
+_age=30              # Starts with underscore
+MAX_LIMIT=100        # All caps for constants
+```
+
+### **Invalid Names**
+```bash
+3years=30            # Starts with number ❌
+first-name="John"    # Hyphens ❌
+user name="John"     # Spaces ❌
+```
+
+### **Best Practices**
+✔ Use descriptive names (`user_age` vs `ua`)  
+✔ Be consistent with case (`firstName` vs `first_name`)  
+✔ UPPERCASE for constants (`MAX_USERS=100`)  
+✔ Avoid special characters except `_`  
+
+## **3. Practical Example**
+
+```bash
+#!/bin/bash
+
+# Define associative array (Bash 4+ required)
+declare -A employee=(
+    ["id"]=1001
+    ["name"]="John Smith"
+    ["department"]="Engineering"
+    ["salary"]=75000
+)
+
+# Access and display information
+echo "Employee Record:"
+echo "ID: ${employee["id"]}"
+echo "Name: ${employee["name"]}"
+echo "Department: ${employee["department"]}"
+echo "Salary: \$ ${employee["salary"]}"
+
+# Update a value
+employee["salary"]=80000
+echo "New salary: \$ ${employee["salary"]}"
+```
+
+**Output:**
+```
+Employee Record:
+ID: 1001
+Name: John Smith
+Department: Engineering
+Salary: $ 75000
+New salary: $ 80000
+```
 
 ---
 
