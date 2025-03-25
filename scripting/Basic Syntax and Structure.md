@@ -1,4 +1,4 @@
-# **Basic Syntax and Structure – Scripting Tutorial Notes**  
+# **Basic Syntax and Structure**  
 
 ## **1. Script File Structure**  
 A script typically follows this structure:  
