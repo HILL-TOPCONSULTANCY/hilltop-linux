@@ -115,57 +115,56 @@ user name="John"     # Spaces ❌
 ✔ UPPERCASE for constants (`MAX_USERS=100`)  
 ✔ Avoid special characters except `_`  
 
-## **3. Practical Example**
-
-```bash
-#!/bin/bash
-
-# Define associative array (Bash 4+ required)
-declare -A employee=(
-    ["id"]=1001
-    ["name"]="John Smith"
-    ["department"]="Engineering"
-    ["salary"]=75000
-)
-
-# Access and display information
-echo "Employee Record:"
-echo "ID: ${employee["id"]}"
-echo "Name: ${employee["name"]}"
-echo "Department: ${employee["department"]}"
-echo "Salary: \$ ${employee["salary"]}"
-
-# Update a value
-employee["salary"]=80000
-echo "New salary: \$ ${employee["salary"]}"
-```
-
-**Output:**
-```
-Employee Record:
-ID: 1001
-Name: John Smith
-Department: Engineering
-Salary: $ 75000
-New salary: $ 80000
-```
-
 ---
 
-## **4. Data Types**  
-Bash primarily treats data as **strings**, but numbers can be used in arithmetic contexts.  
+Here's the data types table with expanded definitions and examples for each type:
 
-| **Type**    | **Example**       | **Notes**                     |  
-|------------|------------------|------------------------------|  
-| **String** | `text="Hello"`   | Default type (no quotes needed for single words). |  
-| **Integer** | `num=10`        | Used in arithmetic operations. |  
-| **Array**  | `arr=("A" "B")`  | Lists of values (index starts at 0). |  
+| **Type**    | **Definition** | **Example**       | **Notes**                     |  
+|------------|--------------|------------------|------------------------------|
+| **String** | Textual data, the default type in Bash | `text="Hello"`<br>`path=/home/user` | - Quotes optional for simple words<br>- Use `${#var}` for length<br>- Supports substring extraction |
+| **Integer** | Whole numbers for arithmetic | `num=10`<br>`sum=$((5+3))` | - No floating-point by default<br>- Use `$(( ))` for math<br>`-eq`, `-lt` for comparisons |
+| **Array** | Indexed list of values | `arr=("A" "B")`<br>`echo ${arr[0]}` | - Zero-based indexing<br>- `${arr[@]}` for all elements<br>- Supports sparse arrays |
 
-### **Example: Arithmetic**  
+### **Expanded Examples:**
+
+**String:**
 ```bash
-sum=$((5 + 3))  # $((...)) for math  
-echo "5 + 3 = $sum"  
+name="John Doe"           # Simple string
+echo "Length: ${#name}"   # Shows 8 (includes space)
+echo "First 4 chars: ${name:0:4}"  # "John"
 ```
+
+**Integer:**
+```bash
+count=5
+((count++))               # Increment to 6
+if (( count > 3 )); then  # Arithmetic comparison
+   echo "Over 3"
+fi
+```
+
+**Array:**
+```bash
+files=("report.txt" "data.csv")
+files+=("notes.doc")      # Append new element
+echo "First file: ${files[0]}"  # "report.txt"
+```
+
+**Key Differences:**
+1. **Strings**  
+   - Default type for all variables  
+   - `"${var}"` syntax enables advanced operations  
+   - No type enforcement (all variables are strings at core)
+
+2. **Integers**  
+   - Become active only in arithmetic contexts  
+   - `let` or `$(( ))` required for math  
+   - Octal interpretation if leading zero (`08` causes error)
+
+3. **Arrays**  
+   - Indexed (`arr[0]`) or associative (`arr["key"]`)  
+   - Require special syntax for access `${arr[@]}`  
+   - `+=` operator for appending elements  
 
 ---
 
