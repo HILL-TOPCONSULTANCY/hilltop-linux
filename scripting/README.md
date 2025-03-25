@@ -51,7 +51,7 @@
   chmod +x script.sh  # Make executable  
   ./script.sh         # Run  
   ```
-  ```
+
   The line `#!/bin/bash` is called a **shebang** (or **hashbang**) and is used at the **beginning of a Bash script** to specify which interpreter should be used to execute the script.
 
 ### **What Does `#!/bin/bash` Mean?**
