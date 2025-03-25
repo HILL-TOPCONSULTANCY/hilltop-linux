@@ -1,6 +1,4 @@
-# **Introduction to Scripting – Tutorial Notes**  
-
-## **1. What is Scripting?**  
+# **1. What is Scripting?**  
 - **Scripting** refers to writing small programs (scripts) to automate tasks.  
 - Scripts are usually **interpreted** (executed line-by-line) rather than compiled.  
 - Used for automation, system administration, data processing, and more.  
