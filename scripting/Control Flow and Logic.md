@@ -1,4 +1,4 @@
-# **Control Flow and Logic *
+# Control Flow and Logic
 Control flow allows scripts to make decisions using conditions.
 
 ## **1. Conditional Statements**
