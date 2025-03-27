@@ -1,165 +1,233 @@
-# Control Flow and Logic
-Control flow allows scripts to make decisions using conditions.
+# **Control Flow and Logic in Bash Scripting**
 
 ## **1. Conditional Statements**
 
 ### **Basic `if` Statement**
+**Condition:** Checks if the variable `sex` equals "male"
 ```bash
 sex="male"
 if [ "$sex" = "male" ]; then
-    echo "Gender: Male"
+    echo "Gender: Male"  # Executes when condition is true
 fi
 ```
-*Output: "Gender: Male"*
+*Output:*  
+`Gender: Male`
 
 ### **`if-else` Statement**
+**Condition:** Checks if the variable `name` equals "john"
 ```bash
 name="john"
 if [ "$name" = "john" ]; then
-    echo "Hello John"
+    echo "Hello John"  # Executes if true
 else
-    echo "You're not John"
+    echo "You're not John"  # Executes if false
 fi
 ```
-*Output: "Hello John"*
+*Output:*  
+`Hello John`
 
 ### **`elif` Statement**
+**Conditions:** 
+1. First checks if age is less than 18
+2. Then checks if between 18-65
+3. Finally defaults to senior
 ```bash
 age=30
 if [ "$age" -lt 18 ]; then
     echo "Minor"
 elif [ "$age" -ge 18 ] && [ "$age" -lt 65 ]; then
-    echo "Adult"
+    echo "Adult"  # This condition is true for age=30
 else
     echo "Senior"
 fi
 ```
-*Output: "Adult"*
+*Output:*  
+`Adult`
 
 ---
 
-## **2. Loops**
+## **2. Looping Structures**
 
 ### **`for` Loop**
+**Condition:** Iterates through each item in the list
 ```bash
 for name in "john" "mary" "david"; do
-    echo "Processing $name"
+    echo "Processing $name"  # Executes for each name
 done
 ```
-*Output: Processes each name*
+*Output:*  
+```
+Processing john  
+Processing mary  
+Processing david
+```
 
 ### **`while` Loop**
+**Condition:** Continues while counter is less than or equal to 3
 ```bash
 counter=1
-while [ "$counter" -le 3 ]; do
+while [ "$counter" -le 3 ]; do  # -le = less than or equal
     echo "Attempt $counter"
-    ((counter++))
+    ((counter++))  # Increment counter
 done
 ```
-*Output: Counts from 1 to 3*
+*Output:*  
+```
+Attempt 1  
+Attempt 2  
+Attempt 3
+```
 
 ### **`until` Loop**
+**Condition:** Runs until age reaches 30
 ```bash
 age=25
-until [ "$age" -ge 30 ]; do
+until [ "$age" -ge 30 ]; do  # -ge = greater than or equal
     echo "Current age: $age"
-    ((age++))
+    ((age++))  # Increment age
 done
 ```
-*Output: Shows ages 25-29*
+*Output:*  
+```
+Current age: 25  
+Current age: 26  
+Current age: 27  
+Current age: 28  
+Current age: 29
+```
 
 ---
 
-## **3. `case` Statement**
+## **3. Case Statements**
+
+### **`case` Statement**
+**Conditions:** Matches the value of `sex` against patterns
 ```bash
 sex="male"
 case "$sex" in
     "male")
-        echo "Title: Mr."
+        echo "Title: Mr."  # Matches this pattern
         ;;
     "female")
         echo "Title: Ms."
         ;;
     *)
-        echo "Title: Mx."
+        echo "Title: Mx."  # Default case
         ;;
 esac
 ```
-*Output: "Title: Mr."*
+*Output:*  
+`Title: Mr.`
 
 ---
 
 ## **4. Loop Control**
 
-### **`break` Example**
+### **`break` Statement**
+**Condition:** Breaks loop when i equals 3
 ```bash
 for i in {1..5}; do
-    if [ "$i" -eq 3 ]; then
-        break
+    if [ "$i" -eq 3 ]; then  # -eq = equals
+        break  # Exit loop immediately
     fi
     echo "Number $i"
 done
 ```
-*Output: Shows 1, 2*
+*Output:*  
+```
+Number 1  
+Number 2
+```
 
-### **`continue` Example**
+### **`continue` Statement**
+**Condition:** Skips iteration when i equals 3
 ```bash
 for i in {1..5}; do
     if [ "$i" -eq 3 ]; then
-        continue
+        continue  # Skip to next iteration
     fi
     echo "Number $i"
 done
 ```
-*Output: Shows 1, 2, 4, 5*
+*Output:*  
+```
+Number 1  
+Number 2  
+Number 4  
+Number 5
+```
 
 ---
 
-## **5. Complete Example: Profile Checker**
+## **5. Complete Profile Checker Example**
+
 ```bash
 #!/bin/bash
 
+# Variable initialization
 name="john"
 sex="male"
 age=30
 
 echo "Profile Verification:"
 
-# Name check
+# Name validation condition
 if [ "$name" = "john" ]; then
-    echo "- Name verified"
+    echo "- Name verified"  # True branch
 else
-    echo "- Name mismatch"
+    echo "- Name mismatch"  # False branch
 fi
 
-# Age classification
+# Age classification conditions
 if [ "$age" -lt 13 ]; then
     group="Child"
-elif [ "$age" -lt 20 ]; then
+elif [ "$age" -lt 20 ]; then  # 13-19
     group="Teen"
-elif [ "$age" -lt 65 ]; then
-    group="Adult"
+elif [ "$age" -lt 65 ]; then  # 20-64
+    group="Adult"  # This matches for age=30
 else
-    group="Senior"
+    group="Senior"  # 65+
 fi
 echo "- Age group: $group"
 
-# Gender title
+# Gender title condition
 case "$sex" in
-    "male") title="Mr." ;;
+    "male") title="Mr." ;;  # Matches this case
     "female") title="Ms." ;;
-    *) title="Mx." ;;
+    *) title="Mx." ;;  # Default case
 esac
 echo "- Formal title: $title"
 
-# Countdown
+# Countdown loop condition
 echo "Counting down:"
 counter=3
-while [ "$counter" -gt 0 ]; do
+while [ "$counter" -gt 0 ]; do  # -gt = greater than
     echo "$counter..."
-    ((counter--))
+    ((counter--))  # Decrement counter
 done
 echo "Profile complete!"
 ```
 
----
+*Output:*  
+```
+Profile Verification:
+- Name verified
+- Age group: Adult
+- Formal title: Mr.
+Counting down:
+3...
+2...
+1...
+Profile complete!
+```
+
+### **Key Conditions Explained:**
+1. **String Comparison**: `[ "$var" = "value" ]` checks equality
+2. **Numerical Comparisons**:
+   - `-lt`: less than
+   - `-le`: less than or equal
+   - `-gt`: greater than
+   - `-ge`: greater than or equal
+   - `-eq`: equals
+3. **Case Patterns**: Exact string matching with fallback
+4. **Loop Conditions**: Continue until condition becomes false
